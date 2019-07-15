@@ -1,0 +1,47 @@
+<div>
+  <form [formGroup]="dateForm">
+    <mat-form-field>
+      <mat-select matInput placeholder="Select" formControlName="date"  (selectionChange)="Onchange()">
+        <!-- <mat-option *ngFor="let dte of dateList" [value]="dte">{{dte}}</mat-option> -->
+        <mat-option  value="today">ToDay</mat-option>
+        <mat-option value="daterange">DateRange</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div *ngIf="today">
+      <mat-form-field *ngIf="todayflag">
+          <input matInput [matDatepicker]="picker" placeholder="Today" formControlName="toDay" [min]="minDate" [max]="maxDate">
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <!-- <mat-datetimepicker-toggle  matSuffix [for]="end"></mat-datetimepicker-toggle>
+          <mat-datetimepicker #end type="datetime" openOnFocus="true" timeInterval="1">
+          </mat-datetimepicker>
+          <input placeholder="Today" formControlName="toDay" [min]='today'
+          matInput [matDatetimepicker]="end" onkeypress="return (event.charCode == 0)" autocomplete="false" readonly required> -->
+      </mat-form-field>
+    </div>
+    <div *ngIf=daterange>
+      <mat-form-field *ngIf="daterangeflag">
+        <input matInput [matDatepicker]="picker1" placeholder="From"  formControlName="fromDate" [min]="startDate" [max]="maxDate">
+        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+        <mat-datepicker #picker1></mat-datepicker>
+        <!-- <mat-datetimepicker-toggle matSuffix [for]="end" ></mat-datetimepicker-toggle>
+        <mat-datetimepicker #end type="datetime" openOnFocus="true" timeInterval="1">
+        </mat-datetimepicker>
+        <input matInput [matDatetimepicker]="end" placeholder="From"  formControlName="fromDate" [min]="startDate" [max]="maxDate"
+        onkeypress="return (event.charCode == 0)" autocomplete="false" readonly required> -->
+      </mat-form-field>
+      <br>
+      <mat-form-field *ngIf="daterangeflag">
+        <input matInput [matDatepicker]="picker2" placeholder="To" formControlName="toDate" [min]="startDate" [max]="maxDate">
+        <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+        <mat-datepicker #picker2></mat-datepicker>
+        <!-- <mat-datetimepicker-toggle matSuffix [for]="end"></mat-datetimepicker-toggle>
+        <mat-datetimepicker #end type="datetime" openOnFocus="true" timeInterval="1">
+        </mat-datetimepicker>
+        <input matInput [matDatetimepicker]="end" placeholder="To"  formControlName="toDate" [min]="startDate" [max]="maxDate" 
+        onkeypress="return (event.charCode == 0)" autocomplete="false" readonly required> -->
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+
